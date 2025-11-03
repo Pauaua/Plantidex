@@ -44,10 +44,14 @@
                     <div class="error" id="telefono-error"></div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="departamento">Departamento</label>
-                    <input type="text" id="departamento" name="departamento" class="form-control" 
-                           maxlength="100" placeholder="Ej: Desarrollo, Marketing, etc.">
-                    <div class="error" id="departamento-error"></div>
+                    <label class="form-label" for="sector">Sector *</label>
+                    <select id="sector" name="departamento" class="form-control" required>
+                        <option value="">Seleccione un sector</option>
+                        <option value="REFORESTACION">Reforestación</option>
+                        <option value="SUELOS">Suelos</option>
+                        <option value="BIODIVERSIDAD">Biodiversidad</option>
+                    </select>
+                    <div class="error" id="sector-error"></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="rol">Rol</label>

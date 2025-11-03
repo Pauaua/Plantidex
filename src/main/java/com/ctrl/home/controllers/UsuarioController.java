@@ -116,7 +116,12 @@ public class UsuarioController {
         usuario.setNombre(usuarioActualizado.getNombre());
         usuario.setEmail(usuarioActualizado.getEmail());
         usuario.setRol(usuarioActualizado.getRol());
-        usuario.setTelefono(usuarioActualizado.getTelefono());
+        // Si el teléfono está vacío, guardar null
+        if (usuarioActualizado.getTelefono() == null || usuarioActualizado.getTelefono().trim().isEmpty()) {
+            usuario.setTelefono(null);
+        } else {
+            usuario.setTelefono(usuarioActualizado.getTelefono());
+        }
         usuario.setDepartamento(usuarioActualizado.getDepartamento());
         usuario.setEstado(usuarioActualizado.getEstado());
 

@@ -42,10 +42,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" class="form-control" 
-                           th:value="${usuario.telefono}">
-                    <div class="error" id="telefono-error"></div>
+              <label for="telefono">Teléfono (9 dígitos, opcional)</label>
+              <input type="tel" id="telefono" name="telefono" class="form-control" 
+                  th:value="${usuario.telefono}" pattern="[0-9]{9}" maxlength="9" placeholder="Ej: 912345678">
+              <div class="error" id="telefono-error"></div>
                 </div>
 
                 <div class="form-group">
@@ -58,13 +58,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="departamento">Departamento *</label>
-                    <select id="departamento" name="departamento" class="form-control" required>
+                    <label for="sector">Sector *</label>
+                    <select id="sector" name="departamento" class="form-control" required>
+                        <option value="" th:if="${usuario.departamento == null}">Seleccione un sector</option>
                         <option value="REFORESTACION" th:selected="${usuario.departamento == 'REFORESTACION'}">Reforestación</option>
                         <option value="SUELOS" th:selected="${usuario.departamento == 'SUELOS'}">Suelos</option>
                         <option value="BIODIVERSIDAD" th:selected="${usuario.departamento == 'BIODIVERSIDAD'}">Biodiversidad</option>
                     </select>
-                    <div class="error" id="departamento-error"></div>
+                    <div class="error" id="sector-error"></div>
                 </div>
 
                 <div class="form-group">
