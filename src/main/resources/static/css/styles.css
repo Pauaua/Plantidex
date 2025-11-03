@@ -1,0 +1,423 @@
+/* src/main/resources/static/css/styles.css */
+:root {
+    --color-negro: #0a0a0a;
+    --color-negro-claro: #1a1a1a;
+    --color-verde-oscuro: #1b5e20;
+    --color-verde-medio: #2e7d32;
+    --color-verde-claro: #4caf50;
+    --color-verde-brillante: #66bb6a;
+    --color-rojo: #d32f2f;
+    --color-azul: #1976d2;
+    --color-texto: #e0e0e0;
+    --color-texto-secundario: #b0b0b0;
+    --color-borde: #37474f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-negro);
+    color: var(--color-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header y Navegación  */
+.header {
+    background: linear-gradient(135deg, var(--color-negro-claro) 0%, var(--color-verde-oscuro) 100%);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--color-verde-medio);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo h1 {
+    color: var(--color-verde-brillante);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.logo span {
+    color: var(--color-texto);
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--color-texto);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    background-color: var(--color-verde-medio);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+}
+
+/* Contenedor Principal */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    min-height: calc(100vh - 200px);
+}
+
+/*  Hero Section para el Dashboard */
+.hero {
+    background: linear-gradient(135deg, var(--color-negro-claro) 0%, var(--color-verde-oscuro) 100%);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--color-verde-medio);
+    text-align: center;
+}
+
+.hero h2 {
+    color: var(--color-verde-brillante);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    color: var(--color-texto-secundario);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Tarjetas de Proyectos */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.proyecto-card {
+    background: var(--color-negro-claro);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/*  Línea decorativa superior */
+.proyecto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-verde-medio), var(--color-verde-claro));
+}
+
+.proyecto-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(46, 125, 50, 0.2);
+    border-color: var(--color-verde-medio);
+}
+
+.proyecto-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.proyecto-title {
+    color: var(--color-verde-claro);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+/*  Badge para estados */
+.proyecto-badge {
+    background: var(--color-verde-medio);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.proyecto-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+    flex-wrap: wrap;
+}
+
+/*  Estilo para items de metadata */
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/*  Descripción del proyecto */
+.proyecto-descripcion {
+    color: var(--color-texto);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.proyecto-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Botones */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-verde-medio), var(--color-verde-claro));
+    color: white;
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 125, 50, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--color-azul), #42a5f5);
+    color: white;
+    box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(25, 118, 210, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--color-rojo), #f44336);
+    color: white;
+    box-shadow: 0 4px 8px rgba(211, 47, 47, 0.3);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(211, 47, 47, 0.4);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--color-verde-medio);
+    color: var(--color-verde-claro);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-verde-medio);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Formularios */
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: var(--color-negro-claro);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Título de formulario */
+.form-title {
+    text-align: center;
+    color: var(--color-verde-brillante);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-verde-claro);
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-negro);
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    color: var(--color-texto);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-verde-medio);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+/*  Placeholder  */
+.form-control::placeholder {
+    color: var(--color-texto-secundario);
+    opacity: 0.7;
+}
+
+/* Mensajes de Validación */
+.error {
+    color: var(--color-rojo);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 500; 
+}
+
+.success {
+    color: var(--color-verde-claro);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 500; 
+}
+
+/*  Dashboard */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: var(--color-negro-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde);
+    text-align: center;
+}
+
+.stat-number {
+    color: var(--color-verde-brillante);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* Responsive  */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .proyectos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    /* Estilos responsive adicionales */
+    .hero {
+        padding: 2rem 1rem;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .proyecto-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.proyecto-card, .form-container, .stat-card {
+    animation: fadeIn 0.5s ease-out;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRL - Sistema de Gestión de Forestación</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>CTRL</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/login}" class="btn btn-primary">Iniciar Sesión</a></li>
+                <li><a th:href="@{/registro}" class="btn btn-outline">Crear Cuenta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero" style="text-align: center; padding: 4rem 2rem;">
+            <h2 style="font-size: 2.5rem; color: var(--color-verde-claro); margin-bottom: 1rem;">
+                Bienvenido a CTRL
+            </h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Formando comunidad se reverdece el territorio
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a th:href="@{/login}" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 2rem;">
+                    🔐 Iniciar Sesión
+                </a>
+                <a th:href="@{/registro}" class="btn btn-outline" style="font-size: 1.2rem; padding: 1rem 2rem;">
+                    ✨ Crear Cuenta
+                </a>
+            </div>
+        </div>
+
+        <!-- Características -->
+        <div class="proyectos-grid" style="margin-top: 3rem;">
+            <div class="proyecto-card">
+                <div class="proyecto-header">
+                    <h4 class="proyecto-title">👥 Gestión de Usuarios</h4>
+                </div>
+                <p class="proyecto-descripcion">
+                    Sistema integral para administrar usuarios y roles en proyectos de forestación.
+                </p>
+            </div>
+
+            <div class="proyecto-card">
+                <div class="proyecto-header">
+                    <h4 class="proyecto-title">🌳 Proyectos Forestales</h4>
+                </div>
+                <p class="proyecto-descripcion">
+                    Seguimiento y control de iniciativas de forestación nativa.
+                </p>
+            </div>
+
+            <div class="proyecto-card">
+                <div class="proyecto-header">
+                    <h4 class="proyecto-title">📊 Reportes y Análisis</h4>
+                </div>
+                <p class="proyecto-descripcion">
+                    Estadísticas detalladas y reportes sobre el progreso de los proyectos.
+                </p>
+            </div>
+        </div>
+
+        <!-- Sección de Información -->
+        <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: var(--color-fondo-claro); border-radius: 8px;">
+            <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem;">¿Por qué elegir CTRL?</h3>
+            <p style="max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                CTRL ofrece una plataforma integral para la gestión de proyectos de forestación nativa, 
+                facilitando la colaboración entre equipos y el seguimiento efectivo de iniciativas ambientales.
+            </p>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 2rem; margin-top: 4rem; background: var(--color-fondo-claro);">
+        <p>© 2025 CTRL - Sistema de Gestión de Forestación Nativa</p>
+    </footer>
+</body>
+</html>

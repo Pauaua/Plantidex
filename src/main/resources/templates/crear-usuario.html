@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRL - Nuevo Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>CTRL<span>Forestación</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">Dashboard</a></li>
+                <li><a th:href="@{/usuarios/nuevo}" class="btn btn-primary">Nuevo Usuario</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">Crear Nuevo Usuario</h2>
+            
+            <form th:action="@{/usuarios/guardar}" method="post" onsubmit="return validarUsuario()">
+                <!-- Información Personal -->
+                <div class="form-group">
+                    <label class="form-label" for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" 
+                           required minlength="3" maxlength="100"
+                           placeholder="Ej: María Rodríguez García">
+                    <div class="error" id="nombre-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" class="form-control" 
+                           required placeholder="usuario@ctrl.org">
+                    <div class="error" id="email-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" 
+                           pattern="[0-9]{8,12}" placeholder="Ej: 88888888">
+                    <div class="error" id="telefono-error"></div>
+                </div>
+
+                <!-- Información Laboral -->
+                <div class="form-group">
+                    <label class="form-label" for="rol">Rol en la Organización *</label>
+                    <select id="rol" name="rol" class="form-control" required>
+                        <option value="">Seleccione un rol</option>
+                        <option value="ADMIN">Administrador</option>
+                        <option value="USER">Usuario</option>
+                    </select>
+                    <div class="error" id="rol-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="departamento">Departamento *</label>
+                    <select id="departamento" name="departamento" class="form-control" required>
+                        <option value="">Seleccione un departamento</option>
+                        <option value="reforestacion">Reforestación</option>
+                        <option value="suelos">Regeneración de Suelos</option>
+                        <option value="biodiversidad">Biodiversidad</option>
+                        <option value="investigacion">Investigación</option>
+                        <option value="comunicacion">Comunicación</option>
+                    </select>
+                    <div class="error" id="departamento-error"></div>
+                </div>
+
+                <!-- Estado del Usuario -->
+                <div class="form-group">
+                    <label class="form-label" for="estado">Estado del Usuario *</label>
+                    <select id="estado" name="estado" class="form-control" required>
+                        <option value="">Seleccione un estado</option>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                        <option value="vacaciones">Vacaciones</option>
+                        <option value="capacitacion">En Capacitación</option>
+                    </select>
+                    <div class="error" id="estado-error"></div>
+                </div>
+
+                <!-- Contraseña Temporal -->
+                <div class="form-group">
+                    <label class="form-label" for="password">Contraseña Temporal *</label>
+                    <input type="password" id="password" name="password" class="form-control" 
+                           required minlength="6" placeholder="Mínimo 6 caracteres">
+                    <div class="error" id="password-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" 
+                           required placeholder="Repite la contraseña">
+                    <div class="error" id="confirmPassword-error"></div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        👤 Crear Usuario
+                    </button>
+                    <a th:href="@{/}" class="btn btn-outline" style="text-decoration: none; flex: 1; text-align: center;">
+                        ↩️ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validarUsuario() {
+            const nombre = document.getElementById('nombre');
+            const email = document.getElementById('email');
+            const rol = document.getElementById('rol');
+            const departamento = document.getElementById('departamento');
+            const estado = document.getElementById('estado');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            let isValid = true;
+
+            // Limpiar errores anteriores
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+            // Validar nombre
+            if (!nombre.value.trim()) {
+                document.getElementById('nombre-error').textContent = 'El nombre es requerido';
+                isValid = false;
+            } else if (nombre.value.length < 3) {
+                document.getElementById('nombre-error').textContent = 'El nombre debe tener al menos 3 caracteres';
+                isValid = false;
+            }
+
+            // Validar email
+            if (!email.value.trim()) {
+                document.getElementById('email-error').textContent = 'El correo electrónico es requerido';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email.value)) {
+                document.getElementById('email-error').textContent = 'Formato de correo inválido';
+                isValid = false;
+            }
+
+            // Validar rol
+            if (!rol.value) {
+                document.getElementById('rol-error').textContent = 'El rol es requerido';
+                isValid = false;
+            }
+
+            // Validar departamento
+            if (!departamento.value) {
+                document.getElementById('departamento-error').textContent = 'El departamento es requerido';
+                isValid = false;
+            }
+
+            // Validar estado
+            if (!estado.value) {
+                document.getElementById('estado-error').textContent = 'El estado es requerido';
+                isValid = false;
+            }
+
+            // Validar contraseña
+            if (!password.value) {
+                document.getElementById('password-error').textContent = 'La contraseña es requerida';
+                isValid = false;
+            } else if (password.value.length < 6) {
+                document.getElementById('password-error').textContent = 'La contraseña debe tener al menos 6 caracteres';
+                isValid = false;
+            }
+
+            // Validar confirmación de contraseña
+            if (!confirmPassword.value) {
+                document.getElementById('confirmPassword-error').textContent = 'Debes confirmar la contraseña';
+                isValid = false;
+            } else if (password.value !== confirmPassword.value) {
+                document.getElementById('confirmPassword-error').textContent = 'Las contraseñas no coinciden';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Validación en tiempo real para confirmar contraseña
+        document.getElementById('confirmPassword')?.addEventListener('blur', function() {
+            const password = document.getElementById('password');
+            const confirmPassword = this;
+            const errorElement = document.getElementById('confirmPassword-error');
+            
+            if (password.value !== confirmPassword.value) {
+                errorElement.textContent = 'Las contraseñas no coinciden';
+            } else {
+                errorElement.textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>

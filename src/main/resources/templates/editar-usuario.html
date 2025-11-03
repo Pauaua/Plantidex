@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRL - Editar Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>CTRL<span>Forestación</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/usuarios}">Usuarios</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--color-verde-claro);">
+                Editar Usuario
+            </h2>
+
+            <form th:action="@{/usuarios/actualizar/{id}(id=${usuario.id})}" method="post" onsubmit="return validarUsuario()">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" 
+                           required minlength="3" th:value="${usuario.nombre}">
+                    <div class="error" id="nombre-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" class="form-control" 
+                           required th:value="${usuario.email}">
+                    <div class="error" id="email-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" 
+                           th:value="${usuario.telefono}">
+                    <div class="error" id="telefono-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rol">Rol *</label>
+                    <select id="rol" name="rol" class="form-control" required>
+                        <option value="ADMIN" th:selected="${usuario.rol == 'ADMIN'}">Administrador</option>
+                        <option value="USER" th:selected="${usuario.rol == 'USER'}">Usuario</option>
+                    </select>
+                    <div class="error" id="rol-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="departamento">Departamento *</label>
+                    <select id="departamento" name="departamento" class="form-control" required>
+                        <option value="REFORESTACION" th:selected="${usuario.departamento == 'REFORESTACION'}">Reforestación</option>
+                        <option value="SUELOS" th:selected="${usuario.departamento == 'SUELOS'}">Suelos</option>
+                        <option value="BIODIVERSIDAD" th:selected="${usuario.departamento == 'BIODIVERSIDAD'}">Biodiversidad</option>
+                    </select>
+                    <div class="error" id="departamento-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado *</label>
+                    <select id="estado" name="estado" class="form-control" required>
+                        <option value="ACTIVO" th:selected="${usuario.estado == 'ACTIVO'}">Activo</option>
+                        <option value="INACTIVO" th:selected="${usuario.estado == 'INACTIVO'}">Inactivo</option>
+                    </select>
+                    <div class="error" id="estado-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Nueva Contraseña (dejar en blanco para mantener la actual)</label>
+                    <input type="password" id="password" name="password" class="form-control" minlength="6">
+                    <div class="error" id="password-error"></div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">
+                        Guardar Cambios
+                    </button>
+                    <a th:href="@{/usuarios}" class="btn btn-outline" style="flex: 1; text-align: center;">
+                        Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validarUsuario() {
+            const nombre = document.getElementById('nombre');
+            const email = document.getElementById('email');
+            const rol = document.getElementById('rol');
+            const departamento = document.getElementById('departamento');
+            const estado = document.getElementById('estado');
+            const password = document.getElementById('password');
+            let isValid = true;
+
+            // Limpiar errores anteriores
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+            // Validar nombre
+            if (!nombre.value.trim()) {
+                document.getElementById('nombre-error').textContent = 'El nombre es requerido';
+                isValid = false;
+            }
+
+            // Validar email
+            if (!email.value.trim()) {
+                document.getElementById('email-error').textContent = 'El correo es requerido';
+                isValid = false;
+            }
+
+            // Validar password si se proporciona
+            if (password.value && password.value.length < 6) {
+                document.getElementById('password-error').textContent = 'La contraseña debe tener al menos 6 caracteres';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso denegado</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div style="display:flex; min-height:100vh; align-items:center; justify-content:center;">
+        <div style="text-align:center; padding:2rem; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.08); max-width:480px;">
+            <div style="font-size:4rem; margin-bottom:0.5rem;">🔒</div>
+            <h2>Acceso denegado</h2>
+            <p>No tienes permisos para ver esta página. Sólo los administradores pueden acceder al listado de usuarios.</p>
+            <div style="margin-top:1rem;">
+                <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
+                <a th:href="@{/login}" class="btn btn-outline" style="margin-left:0.5rem;">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

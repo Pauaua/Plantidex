@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRL - Detalle del Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>CTRL<span>Forestación</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">Dashboard</a></li>
+                <li><a th:href="@{/usuarios/nuevo}" class="btn btn-primary">Nuevo Usuario</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Encabezado del Usuario -->
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 2rem; gap: 2rem;">
+            <div style="flex: 1;">
+                <h2 style="color: var(--color-verde-brillante); margin-bottom: 0.5rem;">
+                    María Rodríguez
+                </h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <span class="proyecto-badge" style="background: var(--color-verde-medio);">Activo</span>
+                    <span class="proyecto-badge" style="background: var(--color-azul);">Administrador</span>
+                    <span style="color: var(--color-texto-secundario);">ID: <span th:text="${id}">1</span></span>
+                </div>
+            </div>
+            <div class="proyecto-actions">
+                <a th:href="@{/usuarios/editar/{id}(id=${id})}" class="btn btn-secondary">✏️ Editar</a>
+                <a th:href="@{/}" class="btn btn-outline">← Volver</a>
+            </div>
+        </div>
+
+        <!-- Grid de Información -->
+        <div class="proyectos-grid" style="grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <!-- Columna Principal -->
+            <div>
+                <!-- Información Personal -->
+                <div class="proyecto-card">
+                    <h3 style="color: var(--color-verde-claro); margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-verde-oscuro); padding-bottom: 0.5rem;">
+                        👤 Información Personal
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Nombre Completo:</strong>
+                            <p>María Rodríguez García</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Correo Electrónico:</strong>
+                            <p>maria.rodriguez@ctrl.org</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Teléfono:</strong>
+                            <p>8888-8888</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Fecha de Registro:</strong>
+                            <p>15 de Enero, 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información Laboral -->
+                <div class="proyecto-card">
+                    <h3 style="color: var(--color-verde-claro); margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-verde-oscuro); padding-bottom: 0.5rem;">
+                        💼 Información Laboral
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Rol:</strong>
+                            <p><span class="proyecto-badge" style="background: var(--color-azul);">Administrador</span></p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Departamento:</strong>
+                            <p>Reforestación</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Estado:</strong>
+                            <p><span class="proyecto-badge">Activo</span></p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-verde-claro);">Fecha de Ingreso:</strong>
+                            <p>10 de Enero, 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Descripción del Perfil -->
+                <div class="proyecto-card">
+                    <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem; border-bottom: 2px solid var(--color-verde-oscuro); padding-bottom: 0.5rem;">
+                        📝 Perfil Profesional
+                    </h3>
+                    <p style="line-height: 1.6;">
+                        Coordinadora principal del departamento de reforestación con 5 años de experiencia 
+                        en gestión de proyectos de forestación nativa. Especialista en especies nativas 
+                        y técnicas de restauración ecológica. Responsable de la supervisión de equipos 
+                        de campo y coordinación con comunidades locales.
+                    </p>
+                </div>
+
+                <!-- Proyectos Asignados -->
+                <div class="proyecto-card">
+                    <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem; border-bottom: 2px solid var(--color-verde-oscuro); padding-bottom: 0.5rem;">
+                        🌿 Proyectos Asignados
+                    </h3>
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="background: var(--color-negro); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--color-verde-medio);">
+                            <strong>Reforestación Quebrada Honda</strong>
+                            <p style="color: var(--color-texto-secundario); font-size: 0.9rem; margin: 0.25rem 0;">Coordinadora Principal</p>
+                            <span class="proyecto-badge" style="background: var(--color-verde-medio); font-size: 0.8rem;">Activo</span>
+                        </div>
+                        <div style="background: var(--color-negro); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--color-azul);">
+                            <strong>Corredor Biológico Norte</strong>
+                            <p style="color: var(--color-texto-secundario); font-size: 0.9rem; margin: 0.25rem 0;">Supervisora Técnica</p>
+                            <span class="proyecto-badge" style="background: var(--color-azul); font-size: 0.8rem;">En Planificación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Lateral -->
+            <div>
+                <!-- Estadísticas del Usuario -->
+                <div class="proyecto-card">
+                    <h3 style="color: var(--color-verde-claro); margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-verde-oscuro); padding-bottom: 0.5rem;">
+                        📊 Estadísticas
+                    </h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: between; margin-bottom: 0.5rem;">
+                            <strong style="color: var(--color-texto);">Proyectos Activos</strong>
+                            <span style="color: var(--color-verde-claro);">2</span>
+                        </div>
+                        <div style="background: var(--color-negro); height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--color-verde-medio), var(--color-verde-claro)); height: 100%; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: between; margin-bottom: 0.5rem;">
+                            <strong style="color: var(--color-texto);">Tareas Completadas</strong>
+                            <span style="color: var(--color-verde-claro);">45/50</span>
+                        </div>
+                        <div style="background: var(--color-negro); height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--color-verde-medio), var(--color-verde-claro)); height: 100%; width: 90%;"></div>
+                        </div>
+                        <small style="color: var(--color-texto-secundario);">90% de eficiencia</small>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; justify-content: between; margin-bottom: 0.5rem;">
+                            <strong style="color: var(--color-texto);">Miembro desde</strong>
+                            <span style="color: var(--color-verde-claro);">5 meses</span>
+                        </div>
+                        <div style="background: var(--color-negro); height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--color-azul), #42a5f5); height: 100%; width: 42%;"></div>
+                        </div>
+                        <small style="color: var(--color-texto-secundario);">42% del año laboral</small>
+                    </div>
+                </div>
+
+                <!-- Información de Contacto -->
+                <div class="proyecto-card">
+                    <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem; border-bottom: 2px solid var(--color-verde-oscuro); padding-bottom: 0.5rem;">
+                        📞 Contacto
+                    </h3>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span>📧</span>
+                            <div>
+                                <div>maria.rodriguez@ctrl.org</div>
+                                <small style="color: var(--color-texto-secundario);">Correo principal</small>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span>📱</span>
+                            <div>
+                                <div>8888-8888</div>
+                                <small style="color: var(--color-texto-secundario);">Teléfono laboral</small>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span>🏢</span>
+                            <div>
+                                <div>Oficina Central</div>
+                                <small style="color: var(--color-texto-secundario);">Sede principal</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acciones Rápidas -->
+                <div class="proyecto-card">
+                    <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem; border-bottom: 2px solid var(--color-verde-oscuro); padding-bottom: 0.5rem;">
+                        ⚡ Acciones Rápidas
+                    </h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a th:href="@{/usuarios/editar/{id}(id=${id})}" class="btn btn-secondary" style="text-align: center;">
+                            ✏️ Editar Usuario
+                        </a>
+                        <button class="btn btn-outline" onclick="enviarRecordatorio()">
+                            🔔 Enviar Recordatorio
+                        </button>
+                        <a th:href="@{/usuarios/eliminar/{id}(id=${id})}" class="btn btn-danger" 
+                           onclick="return confirm('¿Está seguro de eliminar este usuario? Esta acción no se puede deshacer.')">
+                            🗑️ Eliminar Usuario
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enviarRecordatorio() {
+            alert('🔔 Recordatorio enviado a María Rodríguez\n\nSe ha enviado un mensaje recordatorio al correo electrónico del usuario.');
+        }
+
+        // Confirmación para eliminar
+        document.querySelector('.btn-danger')?.addEventListener('click', function(e) {
+            if (!confirm('¿Está seguro de que desea eliminar este usuario? Todos los datos asociados se perderán permanentemente.')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
