@@ -145,4 +145,4 @@ Para más información o reportar problemas, contactar al equipo de desarrollo.
 
 ## Informe PDF
 
-Próximamente disponible
+[Informe PDF Evaluación I](https://github.com/user-attachments/files/23347007/EV1_DSII_acuna_paulina.pdf)
