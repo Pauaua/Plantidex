@@ -17,17 +17,17 @@ public class Usuario {
     
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 3, max = 100, message = "El nombre debe tener entre 3 y 100 caracteres")
-    @Column(nullable = false)
+    @Column(nullable = false, name = "nombre")
     private String nombre;
     
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El formato del email no es válido")
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "email")
     private String email;
     
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
-    @Column(nullable = false)
+    @Column(nullable = false, name = "password")
     private String password;
     
     @NotBlank(message = "El rol es obligatorio")
@@ -86,11 +86,16 @@ public class Usuario {
     
     public LocalDateTime getFechaCreacion() { return fechaCreacion; }
 
-    // No permitimos modificar la fecha de creación después de que se establezca
+    // No se permite modificar la fecha de creación después de que se establezca
     private void setFechaCreacion(LocalDateTime fechaCreacion) { 
         this.fechaCreacion = fechaCreacion; 
     }
 
+        @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+        private List<Proyectos> proyectos = new ArrayList<>();
+
+        public List<Proyectos> getProyectos() { return proyectos; }
+        public void setProyectos(List<Proyectos> proyectos) { this.proyectos = proyectos; }
     @Override
     public String toString() {
         return "Usuario{" +

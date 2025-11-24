@@ -22,48 +22,82 @@
     <div class="container">
         <h1 style="color: var(--color-verde-claro); margin-bottom: 2rem;">Dashboard</h1>
         
-        <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem;">
-            <!-- Tarjeta Crear Usuario -->
-            <div class="dashboard-card" style="background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem;">
-                    <i style="font-size: 2rem;">👤</i> Crear Usuario
-                </h3>
-                <p style="margin-bottom: 1.5rem; color: #666;">
-                    Registra nuevos usuarios en el sistema y asigna sus roles correspondientes.
-                </p>
-                <a th:href="@{/usuarios/nuevo}" class="btn btn-primary" style="display: inline-block;">
-                    Crear Nuevo Usuario
-                </a>
-            </div>
+<div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem;">
+    <!-- Tarjeta Crear Usuario -->
+    <div class="dashboard-card" style="background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem;">
+            <i style="font-size: 2rem;">👤</i> Crear Usuario
+        </h3>
+        <p style="margin-bottom: 1.5rem; color: #666;">
+            Registra nuevos usuarios en el sistema y asigna sus roles correspondientes.
+        </p>
+        <a th:href="@{/usuarios/nuevo}" class="btn btn-primary" style="display: inline-block;">
+            Crear Nuevo Usuario
+        </a>
+    </div>
 
-            <!-- Tarjeta Gestionar Usuarios -->
-            <div class="dashboard-card" style="background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem;">
-                    <i style="font-size: 2rem;">👥</i> Gestionar Usuarios
-                </h3>
-                <p style="margin-bottom: 1.5rem; color: #666;">
-                    Visualiza, edita o elimina usuarios existentes en el sistema.
-                </p>
-                <a th:href="@{/usuarios}" class="btn btn-primary" style="display: inline-block;">
-                    Ver Usuarios
-                </a>
-            </div>
-        </div>
+    <!-- Tarjeta Gestionar Usuarios -->
+    <div class="dashboard-card" style="background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem;">
+            <i style="font-size: 2rem;">👥</i> Gestionar Usuarios
+        </h3>
+        <p style="margin-bottom: 1.5rem; color: #666;">
+            Visualiza, edita o elimina usuarios existentes en el sistema.
+        </p>
+        <a th:href="@{/usuarios}" class="btn btn-primary" style="display: inline-block;">
+            Ver Usuarios
+        </a>
+    </div>
 
-        <!-- Resumen de Estadísticas -->
-        <div class="stats-container" style="margin-top: 3rem; padding: 2rem; background: var(--color-fondo-claro); border-radius: 8px;">
-            <h2 style="color: var(--color-verde-claro); margin-bottom: 1rem;">Resumen del Sistema</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                <div class="stat-card" style="text-align: center; padding: 1rem;">
-                    <h4>Total Usuarios</h4>
-                    <p style="font-size: 1.5rem; color: var(--color-verde-claro);">0</p>
-                </div>
-                <div class="stat-card" style="text-align: center; padding: 1rem;">
-                    <h4>Usuarios Activos</h4>
-                    <p style="font-size: 1.5rem; color: var(--color-verde-claro);">0</p>
-                </div>
-            </div>
+    <!-- Tarjeta Crear Proyecto -->
+    <div class="dashboard-card" style="background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem;">
+            <i style="font-size: 2rem;">🌱</i> Crear Proyecto
+        </h3>
+        <p style="margin-bottom: 1.5rem; color: #666;">
+            Agrega nuevos proyectos de forestación al sistema.
+        </p>
+        <a th:href="@{/proyectos/nuevo}" class="btn btn-primary" style="display: inline-block;">
+            Crear Nuevo Proyecto
+        </a>
+    </div>
+
+    <!-- Tarjeta Gestionar Proyectos -->
+    <div class="dashboard-card" style="background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h3 style="color: var(--color-verde-claro); margin-bottom: 1rem;">
+            <i style="font-size: 2rem;">📋</i> Gestionar Proyectos
+        </h3>
+        <p style="margin-bottom: 1.5rem; color: #666;">
+            Visualiza, edita o elimina proyectos existentes.
+        </p>
+        <a th:href="@{/proyectos}" class="btn btn-primary" style="display: inline-block;">
+            Ver Proyectos
+        </a>
+    </div>
+</div>
+
+<!-- Resumen de Estadísticas -->
+<div class="stats-container" style="margin-top: 3rem; padding: 2rem; background: var(--color-fondo-claro); border-radius: 8px;">
+    <h2 style="color: var(--color-verde-claro); margin-bottom: 1rem;">Resumen del Sistema</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div class="stat-card" style="text-align: center; padding: 1rem;">
+            <h4>Total Usuarios</h4>
+            <p style="font-size: 1.5rem; color: var(--color-verde-claro);" th:text="${totalUsuarios}">0</p>
         </div>
+        <div class="stat-card" style="text-align: center; padding: 1rem;">
+            <h4>Usuarios Activos</h4>
+            <p style="font-size: 1.5rem; color: var(--color-verde-claro);" th:text="${usuariosActivos}">0</p>
+        </div>
+        <div class="stat-card" style="text-align: center; padding: 1rem;">
+            <h4>Total Proyectos</h4>
+            <p style="font-size: 1.5rem; color: var(--color-verde-claro);" th:text="${totalProyectos}">0</p>
+        </div>
+        <div class="stat-card" style="text-align: center; padding: 1rem;">
+            <h4>Proyectos Activos</h4>
+            <p style="font-size: 1.5rem; color: var(--color-verde-claro);" th:text="${proyectosActivos}">0</p>
+        </div>
+    </div>
+</div>
     </div>
 
     <footer style="text-align: center; padding: 2rem; margin-top: 4rem; background: var(--color-fondo-claro);">

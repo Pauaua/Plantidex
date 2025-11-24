@@ -10,11 +10,10 @@
     <header class="header">
         <nav class="navbar">
             <div class="logo">
-                <h1>CTRL</h1>
+                <a href="@{/}">CTRL</a>
             </div>
             <ul class="nav-links">
-                <li><a th:href="@{/}">Dashboard</a></li>
-                <li><a th:href="@{/usuarios/nuevo}" class="btn btn-primary">Nuevo Usuario</a></li>
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
                 <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
             </ul>
         </nav>
@@ -24,7 +23,7 @@
         <div class="form-container">
             <h2 class="form-title">Crear Nuevo Usuario</h2>
             
-            <form th:action="@{/usuarios/guardar}" method="post" onsubmit="return validarUsuario()">
+            <form th:action="@{/usuarios/crear}" method="post" onsubmit="return validarUsuario()">
                 <!-- Información Personal -->
                 <div class="form-group">
                     <label class="form-label" for="nombre">Nombre Completo *</label>

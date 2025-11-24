@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRL - Proyectos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>CTRL</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/proyectos/nuevo}" class="btn btn-primary">Nuevo Proyecto</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 style="color: var(--color-verde-brillante); margin-bottom: 2rem;">Listado de Proyectos</h2>
+        <table class="table" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="proyecto : ${proyectos}">
+                    <td th:text="${proyecto.id}">1</td>
+                    <td th:text="${proyecto.nombre}">Nombre</td>
+                    <td>
+                        <span class="proyecto-badge" style="background: var(--color-verde-medio);" th:text="${proyecto.estado}">Estado</span>
+                    </td>
+                    <td th:text="${proyecto.fechaInicio}">2025-01-01</td>
+                    <td th:text="${proyecto.fechaFin}">2025-12-31</td>
+                    <td th:text="${proyecto.descripcion}">Descripción del proyecto</td>
+                    <td>
+                        <a th:href="@{/proyectos/{id}(id=${proyecto.id})}" class="btn btn-outline">Ver</a>
+                        <a th:href="@{/proyectos/editar/{id}(id=${proyecto.id})}" class="btn btn-secondary">Editar</a>
+                        <form th:action="@{/proyectos/eliminar/{id}(id=${proyecto.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Eliminar este proyecto?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

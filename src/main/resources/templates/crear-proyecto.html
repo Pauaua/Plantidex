@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Proyecto</title>
+    <style>
+        body { background: #fff; color: #222; font-family: Arial, sans-serif; }
+        h1 { color: #228B22; }
+        label { color: #228B22; font-weight: bold; }
+        input, textarea { border: 1px solid #228B22; padding: 5px; margin-bottom: 10px; width: 100%; }
+        button { background: #228B22; color: #fff; border: none; padding: 8px 16px; cursor: pointer; }
+        a { color: #228B22; text-decoration: none; }
+        .form-container { max-width: 500px; margin: auto; }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h1>Crear Proyecto</h1>
+    <form th:action="@{/proyectos}" th:object="${proyecto}" method="post">
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" required />
+        <label>Descripción:</label>
+        <textarea th:field="*{descripcion}" rows="3"></textarea>
+        <label>Fecha de inicio:</label>
+        <input type="date" th:field="*{fechaInicio}" />
+        <label>Fecha de fin:</label>
+        <input type="date" th:field="*{fechaFin}" />
+        <button type="submit">Crear</button>
+    </form>
+    <br>
+    <a th:href="@{/proyectos}">Volver al listado</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRL - Detalle del Proyecto</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>CTRL<span>Forestación</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">Dashboard</a></li>
+                <li><a th:href="@{/proyectos/nuevo}" class="btn btn-primary">Nuevo Proyecto</a></li>
+                <li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div th:if="${proyecto != null}">
+            <div class="card" style="max-width: 600px; margin: 2rem auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(34,139,34,0.08); padding: 2rem;">
+                <h2 style="color: var(--color-verde-brillante); margin-bottom: 1rem; text-align:center;" th:text="${proyecto.nombre}">Nombre Proyecto</h2>
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                    <span class="proyecto-badge" style="background: var(--color-verde-medio); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; font-weight: bold;" th:text="${proyecto.estado}">Estado</span>
+                    <span style="color: var(--color-texto-secundario);">ID: <span th:text="${proyecto.id}">1</span></span>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: var(--color-verde-claro);">Fecha de Inicio:</strong>
+                    <span th:text="${proyecto.fechaInicio}">2024-01-15</span>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: var(--color-verde-claro);">Fecha de Fin:</strong>
+                    <span th:text="${proyecto.fechaFin}">2024-12-31</span>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: var(--color-verde-claro);">Descripción:</strong>
+                    <p style="line-height: 1.6; margin: 0;" th:text="${proyecto.descripcion}">Descripción del proyecto</p>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+                    <a th:href="@{/proyectos/editar/{id}(id=${proyecto.id})}" class="btn btn-secondary">✏️ Editar</a>
+                    <a th:href="@{/proyectos}" class="btn btn-outline">← Volver</a>
+                    <a th:href="@{/proyectos/eliminar/{id}(id=${proyecto.id})}" class="btn btn-danger"
+                       onclick="return confirm('¿Está seguro de eliminar este proyecto? Esta acción no se puede deshacer.')">
+                        🗑️ Eliminar
+                    </a>
+                </div>
+            </div>
+        </div>
+<div th:if="${proyecto == null}">
+    <h2 style="color: red;">Proyecto no encontrado</h2>
+    <a th:href="@{/proyectos}" class="btn btn-outline">← Volver</a>
+</div>
+    </div>
+</body>
+</html>

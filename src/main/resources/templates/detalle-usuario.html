@@ -10,7 +10,7 @@
     <header class="header">
         <nav class="navbar">
             <div class="logo">
-                <h1>CTRL<span>Forestación</span></h1>
+                <h1>CTRL</h1>
             </div>
             <ul class="nav-links">
                 <li><a th:href="@{/}">Dashboard</a></li>
@@ -25,17 +25,17 @@
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 2rem; gap: 2rem;">
             <div style="flex: 1;">
                 <h2 style="color: var(--color-verde-brillante); margin-bottom: 0.5rem;">
-                    María Rodríguez
+                    <span th:text="${usuario.nombre}">Nombre Usuario</span>
                 </h2>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
                     <span class="proyecto-badge" style="background: var(--color-verde-medio);">Activo</span>
-                    <span class="proyecto-badge" style="background: var(--color-azul);">Administrador</span>
-                    <span style="color: var(--color-texto-secundario);">ID: <span th:text="${id}">1</span></span>
+                    <span class="proyecto-badge" style="background: var(--color-azul);" th:text="${usuario.rol}">Rol</span>
+                    <span style="color: var(--color-texto-secundario);">ID: <span th:text="${usuario.id}">1</span></span>
                 </div>
             </div>
             <div class="proyecto-actions">
                 <a th:href="@{/usuarios/editar/{id}(id=${id})}" class="btn btn-secondary">✏️ Editar</a>
-                <a th:href="@{/}" class="btn btn-outline">← Volver</a>
+                <a th:href="@{/dashboard}" class="btn btn-outline">← Volver</a>
             </div>
         </div>
 
@@ -52,19 +52,19 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                         <div>
                             <strong style="color: var(--color-verde-claro);">Nombre Completo:</strong>
-                            <p>María Rodríguez García</p>
+                            <p th:text="${usuario.nombre}">Nombre Usuario</p>
                         </div>
                         <div>
                             <strong style="color: var(--color-verde-claro);">Correo Electrónico:</strong>
-                            <p>maria.rodriguez@ctrl.org</p>
+                            <p th:text="${usuario.email}">correo@ctrl.org</p>
                         </div>
                         <div>
                             <strong style="color: var(--color-verde-claro);">Teléfono:</strong>
-                            <p>8888-8888</p>
+                            <p th:text="${usuario.telefono}">8888-8888</p>
                         </div>
                         <div>
                             <strong style="color: var(--color-verde-claro);">Fecha de Registro:</strong>
-                            <p>15 de Enero, 2024</p>
+                            <p th:text="${#temporals.format(usuario.fechaCreacion, 'dd/MM/yyyy')}">15/01/2024</p>
                         </div>
                     </div>
                 </div>
@@ -78,19 +78,19 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                         <div>
                             <strong style="color: var(--color-verde-claro);">Rol:</strong>
-                            <p><span class="proyecto-badge" style="background: var(--color-azul);">Administrador</span></p>
+                            <p><span class="proyecto-badge" style="background: var(--color-azul);" th:text="${usuario.rol}">Rol</span></p>
                         </div>
                         <div>
                             <strong style="color: var(--color-verde-claro);">Departamento:</strong>
-                            <p>Reforestación</p>
+                            <p th:text="${usuario.departamento}">Departamento</p>
                         </div>
                         <div>
                             <strong style="color: var(--color-verde-claro);">Estado:</strong>
-                            <p><span class="proyecto-badge">Activo</span></p>
+                            <p><span class="proyecto-badge" th:text="${usuario.estado}">Activo</span></p>
                         </div>
                         <div>
                             <strong style="color: var(--color-verde-claro);">Fecha de Ingreso:</strong>
-                            <p>10 de Enero, 2024</p>
+                            <p th:text="${#temporals.format(usuario.fechaCreacion, 'dd/MM/yyyy')}">10/01/2024</p>
                         </div>
                     </div>
                 </div>
@@ -101,10 +101,7 @@
                         📝 Perfil Profesional
                     </h3>
                     <p style="line-height: 1.6;">
-                        Coordinadora principal del departamento de reforestación con 5 años de experiencia 
-                        en gestión de proyectos de forestación nativa. Especialista en especies nativas 
-                        y técnicas de restauración ecológica. Responsable de la supervisión de equipos 
-                        de campo y coordinación con comunidades locales.
+                        Coordinadora principal del departamento de reforestación con 5 años de experiencia en gestión de proyectos de forestación nativa. Especialista en especies nativas y técnicas de restauración ecológica. Responsable de la supervisión de equipos de campo y coordinación con comunidades locales.
                     </p>
                 </div>
 
@@ -115,14 +112,9 @@
                     </h3>
                     <div style="display: grid; gap: 1rem;">
                         <div style="background: var(--color-negro); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--color-verde-medio);">
-                            <strong>Reforestación Quebrada Honda</strong>
-                            <p style="color: var(--color-texto-secundario); font-size: 0.9rem; margin: 0.25rem 0;">Coordinadora Principal</p>
-                            <span class="proyecto-badge" style="background: var(--color-verde-medio); font-size: 0.8rem;">Activo</span>
-                        </div>
-                        <div style="background: var(--color-negro); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--color-azul);">
-                            <strong>Corredor Biológico Norte</strong>
-                            <p style="color: var(--color-texto-secundario); font-size: 0.9rem; margin: 0.25rem 0;">Supervisora Técnica</p>
-                            <span class="proyecto-badge" style="background: var(--color-azul); font-size: 0.8rem;">En Planificación</span>
+                            <strong>Sin proyectos asignados</strong>
+                            <p style="color: var(--color-texto-secundario); font-size: 0.9rem; margin: 0.25rem 0;">-</p>
+                            <span class="proyecto-badge" style="background: var(--color-verde-medio); font-size: 0.8rem;">-</span>
                         </div>
                     </div>
                 </div>
@@ -179,14 +171,14 @@
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <span>📧</span>
                             <div>
-                                <div>maria.rodriguez@ctrl.org</div>
+                                <div th:text="${usuario.email}">correo@ctrl.org</div>
                                 <small style="color: var(--color-texto-secundario);">Correo principal</small>
                             </div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <span>📱</span>
                             <div>
-                                <div>8888-8888</div>
+                                <div th:text="${usuario.telefono}">8888-8888</div>
                                 <small style="color: var(--color-texto-secundario);">Teléfono laboral</small>
                             </div>
                         </div>
@@ -225,7 +217,7 @@
 
     <script>
         function enviarRecordatorio() {
-            alert('🔔 Recordatorio enviado a María Rodríguez\n\nSe ha enviado un mensaje recordatorio al correo electrónico del usuario.');
+            alert('🔔 Recordatorio enviado a María Rodríguez\\n\\nSe ha enviado un mensaje recordatorio al correo electrónico del usuario.');
         }
 
         // Confirmación para eliminar
