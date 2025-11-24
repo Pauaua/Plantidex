@@ -1,7 +1,7 @@
 # CTRL - Sistema de Gestión de Usuarios
 
 ## Descripción
-CTRL es una aplicación web desarrollada con Spring Boot que proporciona un sistema de gestión de usuarios con roles y permisos. Permite el registro de usuarios, autenticación, y administración de perfiles con diferentes niveles de acceso.
+CTRL es una aplicación web desarrollada con Spring Boot que proporciona un sistema de gestión de usuarios con roles y permisos. Permite el registro de usuarios, autenticación, y administración de perfiles con diferentes niveles de acceso. Así mismo posibilita la creación y gestión de proyectos. 
 
 ## Estructura del Proyecto
 ```
@@ -10,12 +10,18 @@ src/
 │   ├── java/
 │   │   └── com/ctrl/home/
 │   │       ├── controllers/
-│   │       │   ├── AppController.java      # Controlador principal de la aplicación
-│   │       │   └── UsuarioController.java  # Controlador para gestión de usuarios
+│   │       │   ├── AppController.java      
+# Controlador principal de la aplicación
+│   │       │   └── UsuarioController.java  
+# Controlador para gestión de usuarios y proyectos
 │   │       ├── models/
-│   │       │   └── Usuario.java            # Modelo de datos de Usuario
+│   │       │   └── Usuario.java  
+│   │       │   └── Proyecto.java
+# Modelo de datos de Usuario y Proyecto
 │   │       └── repositories/
-│   │           └── UsuarioRepository.java   # Repositorio para operaciones con la BD
+│   │           └── UsuarioRepository.java
+│   │           └── ProyectoRepository.java   
+# Repositorio para operaciones con la BD
 │   └── resources/
 │       ├── static/
 │       │   └── css/
@@ -23,14 +29,19 @@ src/
 │       ├── templates/                      # Plantillas Thymeleaf
 │       │   ├── acceso-denegado.html
 │       │   ├── crear-usuario.html
+│       │   ├── crear-proyecto.html
 │       │   ├── dashboard.html
 │       │   ├── detalle-usuario.html
 │       │   ├── editar-usuario.html
+│       │   ├── detalle-proyecto.html
+│       │   ├── editar-proyecto.html
 │       │   ├── index.html
 │       │   ├── login.html
 │       │   ├── registro.html
 │       │   └── usuarios.html
-│       └── application.properties          # Configuración de la aplicación
+│       │   └── proyecto-dashboard.html
+│       └── application.properties          
+# Configuración de la aplicación
 ```
 
 ## Características Principales
@@ -41,6 +52,7 @@ src/
 - Visualización y edición de perfiles
 - Gestión de roles (ADMIN/USER)
 - Estado de usuarios (ACTIVO/INACTIVO)
+- Asignación de Proyectos (En construcción)
 
 ### Roles y Permisos
 - **ADMIN**: Acceso completo al sistema
@@ -122,6 +134,11 @@ spring.jpa.hibernate.ddl-auto=update
 - Opciones de gestión
 - Filtros y búsqueda
 
+### Gestión de Proyectos (`proyectos-dashboard.html`)
+- Lista de proyectos (solo ADMIN)
+- Opciones de gestión
+- Filtros y búsqueda
+
 ## Seguridad
 
 - Validación de sesiones
@@ -145,4 +162,4 @@ Para más información o reportar problemas, contactar al equipo de desarrollo.
 
 ## Informe PDF
 
-[Informe PDF Evaluación I](https://github.com/user-attachments/files/23347007/EV1_DSII_acuna_paulina.pdf)
+En construcción...

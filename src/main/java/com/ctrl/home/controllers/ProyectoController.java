@@ -1,7 +1,9 @@
 package com.ctrl.home.controllers;
 
 import com.ctrl.home.models.Proyectos;
+import com.ctrl.home.models.Usuario;
 import com.ctrl.home.services.IProyectoService;
+import com.ctrl.home.services.IUsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,9 @@ public class ProyectoController {
     @Autowired
     private IProyectoService proyectoService;
 
+    @Autowired
+    private IUsuarioService usuarioService;
+
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("proyectos", proyectoService.listar());
@@ -24,11 +29,16 @@ public class ProyectoController {
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
         model.addAttribute("proyecto", new Proyectos());
+        model.addAttribute("usuarios", usuarioService.listar());
         return "crear-proyecto";
     }
 
     @PostMapping
-    public String guardar(@Valid @ModelAttribute Proyectos proyecto) {
+    public String guardar(@Valid @ModelAttribute Proyectos proyecto, @RequestParam("usuarioId") Long usuarioId) {
+        Usuario usuario = usuarioService.buscarPorId(usuarioId).orElse(null);
+        if (usuario != null) {
+            proyecto.setUsuario(usuario);
+        }
         proyectoService.guardar(proyecto);
         return "redirect:/proyectos";
     }

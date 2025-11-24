@@ -39,6 +39,11 @@
                     <strong style="color: var(--color-verde-claro);">Descripción:</strong>
                     <p style="line-height: 1.6; margin: 0;" th:text="${proyecto.descripcion}">Descripción del proyecto</p>
                 </div>
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: var(--color-verde-claro);">Usuario responsable:</strong>
+                    <span th:if="${proyecto.usuario != null}" th:text="${proyecto.usuario.nombre} + ' (' + ${proyecto.usuario.email} + ')'">Sin usuario</span>
+                    <span th:if="${proyecto.usuario == null}">Sin usuario asignado</span>
+                </div>
                 <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
                     <a th:href="@{/proyectos/editar/{id}(id=${proyecto.id})}" class="btn btn-secondary">✏️ Editar</a>
                     <a th:href="@{/proyectos}" class="btn btn-outline">← Volver</a>

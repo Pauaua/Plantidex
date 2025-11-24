@@ -24,6 +24,14 @@
         <input type="date" th:field="*{fechaInicio}" />
         <label>Fecha de fin:</label>
         <input type="date" th:field="*{fechaFin}" />
+
+        <label>Usuario:</label>
+        <select name="usuarioId" required>
+            <option value="" disabled selected>Seleccione un usuario</option>
+            <th:block th:each="usuario : ${usuarios}">
+                <option th:value="${usuario.id}" th:text="${usuario.nombre} + ' (' + ${usuario.email} + ')'"/>
+            </th:block>
+        </select>
         <button type="submit">Crear</button>
     </form>
     <br>
