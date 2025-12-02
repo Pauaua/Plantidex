@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "usuarios", uniqueConstraints = {

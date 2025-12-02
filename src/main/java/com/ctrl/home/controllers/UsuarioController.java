@@ -51,7 +51,6 @@ public class UsuarioController {
         model.addAttribute("usuario", new Usuario());
         return "crear-usuario";
     }
-
     // Procesar creación de usuario
     @PostMapping("/crear")
     public String crearUsuario(@ModelAttribute Usuario usuario, HttpSession session) {
@@ -64,7 +63,6 @@ public class UsuarioController {
         usuarioService.guardar(usuario);
         return "redirect:/usuarios?success=usuario-creado";
     }
-
     // Mostrar formulario de edición
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable Long id, Model model, HttpSession session) {
@@ -76,7 +74,6 @@ public class UsuarioController {
         model.addAttribute("usuario", usuario);
         return "editar-usuario";
     }
-
     // Actualizar usuario
     @PostMapping("/actualizar/{id}")
     public String actualizarUsuario(@PathVariable Long id,
@@ -99,14 +96,12 @@ public class UsuarioController {
             usuarioActualizado.getEstado() == null || usuarioActualizado.getEstado().trim().isEmpty()) {
             return "redirect:/usuarios/editar/" + id + "?error=campos-obligatorios";
         }
-
         usuario.setNombre(usuarioActualizado.getNombre());
         usuario.setEmail(usuarioActualizado.getEmail());
         usuario.setRol(usuarioActualizado.getRol());
         usuario.setTelefono(usuarioActualizado.getTelefono() != null && !usuarioActualizado.getTelefono().trim().isEmpty() ? usuarioActualizado.getTelefono() : null);
         usuario.setDepartamento(usuarioActualizado.getDepartamento());
         usuario.setEstado(usuarioActualizado.getEstado());
-
         String newPassword = usuarioActualizado.getPassword();
         if (newPassword != null && !newPassword.trim().isEmpty()) {
             usuario.setPassword(newPassword);
@@ -115,7 +110,6 @@ public class UsuarioController {
                 return "redirect:/usuarios/editar/" + id + "?error=pass-obligatoria";
             }
         }
-
         usuarioService.guardar(usuario);
         return "redirect:/usuarios?success=usuario-actualizado";
     }
