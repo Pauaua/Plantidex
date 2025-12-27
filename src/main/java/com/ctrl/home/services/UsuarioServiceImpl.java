@@ -2,6 +2,7 @@ package com.ctrl.home.services;
 
 import com.ctrl.home.models.Usuario;
 import com.ctrl.home.repositories.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,15 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Override
+    @Transactional
     public Usuario guardar(Usuario usuario) {
         return usuarioRepository.save(usuario);
+    }
+
+    @Override
+    @Transactional
+    public void eliminar(Long id) {
+        usuarioRepository.deleteById(id);
     }
 
     @Override
@@ -35,14 +43,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public void eliminar(Long id) {
-        usuarioRepository.deleteById(id);
-    }
-
-    @Override
     public boolean validarLogin(String email, String password) {
-        return buscarPorEmail(email)
-                .map(u -> u.getPassword().equals(password))
-                .orElse(false);
+        // Este método ya no se usa con Spring Security
+        return false;
     }
 }

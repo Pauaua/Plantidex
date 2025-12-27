@@ -4,7 +4,7 @@ import com.ctrl.home.models.Proyectos;
 import com.ctrl.home.repositories.ProyectoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import jakarta.transaction.Transactional;  // Asegúrate de importar esta anotación
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +15,7 @@ public class ProyectoServiceImpl implements IProyectoService {
     private ProyectoRepository proyectoRepository;
 
     @Override
+    @Transactional  // Agregar esta anotación
     public Proyectos guardar(Proyectos proyecto) {
         return proyectoRepository.save(proyecto);
     }
@@ -30,6 +31,7 @@ public class ProyectoServiceImpl implements IProyectoService {
     }
 
     @Override
+    @Transactional  // Agregar esta anotación
     public void eliminar(Long id) {
         proyectoRepository.deleteById(id);
     }
