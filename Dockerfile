@@ -1,0 +1,1 @@
+# Usa una imagen base de OpenJDK con optimizaciones para producci\u00f3n\nFROM openjdk:17-jdk-slim\n\n# Directorio de trabajo en el contenedor\nWORKDIR /app\n\n# Copia el archivo JAR desde el directorio target\nCOPY target/*.jar app.jar\n\n# Expone el puerto 8080\nEXPOSE 8080\n\n# Comando para ejecutar la aplicaci\u00f3n\nENTRYPOINT ["java", "-jar", "app.jar"]

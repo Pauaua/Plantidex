@@ -3,6 +3,7 @@ package com.ctrl.home.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuarios")
@@ -33,6 +34,9 @@ public class Usuario {
     @Pattern(regexp = "^(ACTIVO|INACTIVO)$", message = "El estado debe ser ACTIVO o INACTIVO")
     private String estado = "ACTIVO";
 
+    @Column(name = "fecha_creacion")
+    private LocalDateTime fechaCreacion;
+
     private String telefono;
     private String departamento;
 
@@ -41,7 +45,9 @@ public class Usuario {
     public interface UpdateValidation {}
 
     // Constructor vacío
-    public Usuario() {}
+    public Usuario() {
+        this.fechaCreacion = LocalDateTime.now();
+    }
 
     // Getters y Setters
     public Long getId() { return id; }
@@ -54,7 +60,7 @@ public class Usuario {
     public void setEmail(String email) { this.email = email; }
 
     public String getPassword() { return password; }
-    public void setPassword(String password) { 
+    public void setPassword(String password) {
         // Encriptar automáticamente si no está vacía
         if (password != null && !password.trim().isEmpty() && !password.startsWith("$2a$")) {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -69,6 +75,9 @@ public class Usuario {
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+
+    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
+    public void setFechaCreacion(LocalDateTime fechaCreacion) { this.fechaCreacion = fechaCreacion; }
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }

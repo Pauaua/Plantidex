@@ -1,0 +1,1 @@
+version: '3.8'\r\n\r\nservices:\r\n  app:\r\n    build: .\r\n    ports:\r\n      - "8080:8080"\r\n    environment:\r\n      - SPRING_PROFILES_ACTIVE=dev\r\n    volumes:\r\n      - .:/app\r\n
